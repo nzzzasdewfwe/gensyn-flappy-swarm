@@ -1,135 +1,111 @@
-# Gensyn Flappy Swarm
+# 🎮 Gensyn Flappy Swarm
 
-A Telegram Mini App implementation of Flappy Bird with a sci-fi AI theme, featuring collectible "swarm" power-ups that provide temporary shields.
+A Flappy Bird-style game featuring Gensyn AI quiz questions! Navigate through pipes, collect swarm orbs for shields, and answer questions about Gensyn AI to continue playing.
 
-## Features
+## 🚀 Play the Game
 
-- 🎮 Classic Flappy Bird gameplay with pixel art graphics
-- 🛡️ Collectible swarm orbs that grant 5-second shields
-- 🌌 Sci-fi space theme with parallax scrolling background
-- 📱 Fully responsive design for mobile and desktop
-- 🔊 8-bit sound effects
-- 💾 Local high score tracking
-- 📤 Telegram score sharing integration
+[**Play Now**](https://your-username.github.io/gensyn-flappy-swarm) - Deployed on GitHub Pages
 
-## Deployment Instructions
+## 🎯 Game Features
 
-### 1. Create a Telegram Bot
+- **Classic Flappy Bird gameplay** with modern graphics
+- **50 Gensyn AI quiz questions** covering the project comprehensively
+- **Shield power-ups** - collect swarm orbs to get temporary invincibility
+- **Soft collision system** - slight touches won't end the game
+- **Responsive design** - works on desktop and mobile
+- **High score tracking** - compete with yourself!
 
-1. Open Telegram and search for [@BotFather](https://t.me/BotFather)
-2. Send `/newbot` and follow the instructions
-3. Choose a name (e.g., "Gensyn Flappy Swarm")
-4. Choose a username (e.g., "GensynFlappyBot")
-5. Save the bot token provided
+## 🧠 Quiz Content
 
-### 2. Host the Game
+The game includes 50 questions about:
+- Gensyn AI company basics (founders, funding, investors)
+- Technical components (RL Swarm, BlockAssist, Judge, Verde, etc.)
+- Community programs (Pioneer Program, roles)
+- Statistics and metrics
+- Technical concepts (verifiable compute, task orchestration, etc.)
 
-#### Option A: GitHub Pages
+## 🎮 How to Play
 
-1. Create a new GitHub repository
-2. Upload all files (`index.html`, `style.css`, `app.js`, `README.md`)
-3. Go to Settings → Pages
-4. Select "Deploy from a branch" and choose `main` branch
-5. Your game will be available at `https://yourusername.github.io/repository-name/`
+1. **Tap/Click** to make the bird flap
+2. **Navigate** through the green pipes
+3. **Collect** pink swarm orbs for shields
+4. **Answer** quiz questions every 5 points
+5. **Correct answers** let you continue
+6. **Wrong answers** end the game
 
-#### Option B: Vercel
+## 🛠️ Technical Details
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in the project directory
-3. Follow the prompts
-4. Your game will be deployed and you'll get a URL
+- Built with **Next.js 15** and **TypeScript**
+- **Canvas-based** game engine
+- **Optimized performance** with text caching
+- **Mobile-friendly** touch controls
+- **Audio effects** for better gameplay experience
 
-#### Option C: Netlify
+## 🚀 Local Development
 
-1. Drag and drop the project folder to [Netlify Drop](https://app.netlify.com/drop)
-2. Your game will be instantly deployed
+```bash
+# Clone the repository
+git clone https://github.com/your-username/gensyn-flappy-swarm.git
+cd gensyn-flappy-swarm
 
-### 3. Configure the Bot
+# Install dependencies
+npm install
 
-1. Go back to @BotFather in Telegram
-2. Send `/mybots` and select your bot
-3. Select "Bot Settings" → "Menu Button"
-4. Choose "Configure menu button"
-5. Send the URL where your game is hosted
-6. Send a button text (e.g., "Play Game")
+# Start development server
+npm run dev
 
-### 4. Set Up Web App
+# Open http://localhost:3000
+```
 
-1. Send `/setmenubutton` to @BotFather
-2. Select your bot
-3. Paste your game URL
-4. The game is now accessible via the menu button in your bot
+## 📦 Deployment
 
-### 5. Test
+The game is automatically deployed to GitHub Pages. To deploy manually:
 
-1. Open your bot in Telegram
-2. Click the menu button (bottom-left)
-3. The game should launch in full screen
+```bash
+# Build the project
+npm run build
 
-## Game Controls
+# Export static files
+npm run export
 
-- **Tap/Click**: Flap to fly upward
-- **Space/Arrow Up**: Alternative flap control (desktop)
+# Deploy to your hosting service
+```
 
-## Gameplay
+## 🎨 Game Customization
 
-- Navigate through pipes by tapping to flap
-- Collect pink swarm orbs for a 5-second shield
-- Shield makes you invulnerable to pipes (but not floor/ceiling)
-- Score increases by 1 for each pipe passed
-- Game ends on collision with pipes, floor, or ceiling
+You can easily customize the game by modifying:
 
-## Technical Details
+- **Game constants** in `components/flappy-game.tsx`:
+  - `GRAVITY` - how fast the bird falls
+  - `FLAP_STRENGTH` - how high the bird jumps
+  - `PIPE_SPEED` - how fast pipes move
+  - `PIPE_GAP` - space between pipes
+  - `SHIELD_DURATION` - how long shields last
 
-- Pure HTML5 Canvas + Vanilla JavaScript
-- No external dependencies or frameworks
-- Telegram Web App API integration
-- LocalStorage for high score persistence
-- Responsive design (320px+ width)
-- 60 FPS target performance
+- **Quiz questions** - add more questions to the `questions` array
+- **Visual styling** - modify colors, fonts, and effects
+- **Audio** - customize sound effects
 
-## Browser Compatibility
+## 🤝 Contributing
 
-- Chrome/Edge 90+
-- Safari 14+
-- Firefox 88+
-- Telegram iOS/Android apps
+Contributions are welcome! Feel free to:
 
-## File Structure
+- Add more quiz questions
+- Improve game mechanics
+- Enhance visual effects
+- Fix bugs
+- Add new features
 
-\`\`\`
-gensyn-flappy-swarm/
-├── index.html      # Main HTML structure
-├── style.css       # Minimal styling
-├── app.js          # Game logic and rendering
-└── README.md       # This file
-\`\`\`
+## 📄 License
 
-## Customization
+This project is open source and available under the [MIT License](LICENSE).
 
-### Adjust Difficulty
+## 🔗 Links
 
-In `app.js`, modify these constants:
+- [Gensyn AI Official Website](https://gensyn.ai)
+- [Gensyn Documentation](https://docs.gensyn.ai)
+- [GitHub Repository](https://github.com/your-username/gensyn-flappy-swarm)
 
-\`\`\`javascript
-const GRAVITY = 0.25;          // Increase for harder
-const FLAP_STRENGTH = -5.5;    // Decrease for harder
-const PIPE_GAP = 150;          // Decrease for harder
-const PIPE_SPEED = 2;          // Increase for harder
-\`\`\`
+---
 
-### Change Colors
-
-Modify the gradient colors in the drawing functions:
-- `drawPlayer()` - Player orb colors
-- `drawBackground()` - Space and planet colors
-- `drawPipe()` - Pipe colors
-
-## License
-
-Free to use and modify for your Telegram Mini App projects.
-
-## Credits
-
-Inspired by the original Flappy Bird by Dong Nguyen.
-Created for the Gensyn AI community.
+Made with ❤️ for the Gensyn AI community
