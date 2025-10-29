@@ -73,6 +73,8 @@ export default function FlappyGame() {
       showResult: false,
       selectedAnswer: -1,
       isCorrect: false,
+      optionOrder: [0, 1, 2, 3],
+      correctIndexShuffled: -1,
       questions: [
         {
           question: "What is Gensyn AI?",
@@ -961,7 +963,9 @@ export default function FlappyGame() {
           other: { bg1: "rgba(250, 215, 209, 0.2)", bg2: "rgba(250, 215, 209, 0.1)", border: "#fad7d1" }
         }
         
-        question.options.forEach((option, index) => {
+        // Render options in shuffled order so the correct answer appears under different numbers
+        quizState.optionOrder.forEach((optIdx, index) => {
+          const option = question.options[optIdx]
           const y = optionY + index * optionSpacing
           const buttonHeight = 50
           
@@ -970,7 +974,7 @@ export default function FlappyGame() {
           if (quizState.showResult) {
             if (index === quizState.selectedAnswer) {
               colorSet = quizState.isCorrect ? colors.correct : colors.incorrect
-            } else if (index === question.correct) {
+            } else if (index === quizState.correctIndexShuffled) {
               colorSet = colors.correctHighlight
               } else {
               colorSet = colors.other
@@ -1177,7 +1181,7 @@ export default function FlappyGame() {
       }
 
       // Check floor/ceiling collision
-      if (player.y - player.size / 2 < 0 || player.y + player.size / 2 > canvas.height - 60) {
+      if (player.y - player.size / 2 < 0 || player.y + player.size / 2 > canvas.height) {
         gameOver()
       }
     }
@@ -1248,12 +1252,27 @@ export default function FlappyGame() {
       quizState.selectedAnswer = -1
       quizState.isCorrect = false
       quizState.currentQuestion = Math.floor(Math.random() * quizState.questions.length)
+
+      // Shuffle option order so the correct answer is under different numbers each time
+      const optionCount = quizState.questions[quizState.currentQuestion].options.length
+      const order = Array.from({ length: optionCount }, (_, i) => i)
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        const tmp = order[i]
+        order[i] = order[j]
+        order[j] = tmp
+      }
+      quizState.optionOrder = order
+      quizState.correctIndexShuffled = order.indexOf(
+        quizState.questions[quizState.currentQuestion].correct
+      )
     }
 
     function checkQuizAnswer(selectedOption: number) {
       const question = quizState.questions[quizState.currentQuestion]
       quizState.selectedAnswer = selectedOption
-      quizState.isCorrect = selectedOption === question.correct
+      // Compare with shuffled correct index
+      quizState.isCorrect = selectedOption === quizState.correctIndexShuffled
       quizState.showResult = true
       
       // After 1 second, proceed based on result
