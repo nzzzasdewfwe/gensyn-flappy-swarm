@@ -53,7 +53,7 @@ export default function FlappyGame() {
     // Game constants
     const SPEED_MULTIPLIER = 0.7 // 30% slower overall
     const GRAVITY = 0.8 * SPEED_MULTIPLIER
-    const FLAP_STRENGTH = -11.5 * SPEED_MULTIPLIER
+    const FLAP_STRENGTH = -11.5 * 1.2 * SPEED_MULTIPLIER
     const PIPE_SPEED = 4 * SPEED_MULTIPLIER
     const PIPE_GAP = 180
     const PIPE_SPACING = 220
