@@ -32,7 +32,11 @@ export default function FlappyGame() {
     window.addEventListener("resize", resizeCanvas)
 
     const playerImage = new Image()
-    playerImage.src = "/player.png"
+    const assetPrefix =
+      (typeof window !== "undefined" && (window as any).__NEXT_DATA__?.assetPrefix) ||
+      (process.env.NEXT_PUBLIC_BASE_PATH as string) ||
+      ""
+    playerImage.src = `${assetPrefix}/player.png`
     let imageLoaded = false
     playerImage.onload = () => {
       imageLoaded = true
@@ -40,7 +44,7 @@ export default function FlappyGame() {
 
     // Background image
     const backgroundImage = new Image()
-    backgroundImage.src = "/pattern31.png"
+    backgroundImage.src = `${assetPrefix}/pattern31.png`
     let backgroundLoaded = false
     backgroundImage.onload = () => {
       backgroundLoaded = true
