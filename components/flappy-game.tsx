@@ -51,9 +51,10 @@ export default function FlappyGame() {
     }
 
     // Game constants
-    const GRAVITY = 0.8
-    const FLAP_STRENGTH = -11.5
-    const PIPE_SPEED = 4
+    const SPEED_MULTIPLIER = 0.7 // 30% slower overall
+    const GRAVITY = 0.8 * SPEED_MULTIPLIER
+    const FLAP_STRENGTH = -11.5 * SPEED_MULTIPLIER
+    const PIPE_SPEED = 4 * SPEED_MULTIPLIER
     const PIPE_GAP = 180
     const PIPE_SPACING = 220
     const PLAYER_SIZE = 35 // Увеличен размер игрока на 10% (с 32 до 35)
